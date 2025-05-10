@@ -56,10 +56,9 @@ gdjs.Start_95countdownCode.GDfloor2Objects2= [];
 gdjs.Start_95countdownCode.GDfloor2Objects3= [];
 
 
-gdjs.Start_95countdownCode.asyncCallback25184324 = function (runtimeScene, asyncObjectsList) {
+gdjs.Start_95countdownCode.asyncCallback17438684 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-{gdjs.evtTools.firebaseTools.firestore.writeField("UserInfo", "playerUID", "venue", "baked", gdjs.VariablesContainer.badVariable, true);
-}gdjs.Start_95countdownCode.localVariables.length = 0;
+gdjs.Start_95countdownCode.localVariables.length = 0;
 }
 gdjs.Start_95countdownCode.eventsList0 = function(runtimeScene) {
 
@@ -70,14 +69,14 @@ gdjs.Start_95countdownCode.eventsList0 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.3), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback25184324(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.3), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17438684(runtimeScene, asyncObjectsList)));
 }
 }
 
 }
 
 
-};gdjs.Start_95countdownCode.asyncCallback11758988 = function (runtimeScene, asyncObjectsList) {
+};gdjs.Start_95countdownCode.asyncCallback17442324 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "GameScene1", false);
 }gdjs.Start_95countdownCode.localVariables.length = 0;
@@ -91,7 +90,7 @@ gdjs.Start_95countdownCode.eventsList1 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(1.5), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback11758988(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(1.5), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17442324(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -168,7 +167,7 @@ isConditionTrue_0 = false;
 isConditionTrue_0 = gdjs.evtTools.runtimeScene.sceneJustBegins(runtimeScene);
 if (isConditionTrue_0) {
 {runtimeScene.getScene().getVariables().getFromIndex(0).setString(gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "uid", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)));
-}{gdjs.evtTools.firebaseTools.firestore.getDocument("UserInfo", "playerUID", gdjs.VariablesContainer.badVariable, gdjs.VariablesContainer.badVariable);
+}{gdjs.evtTools.firebaseTools.firestore.getDocument("users", "playerUID", gdjs.VariablesContainer.badVariable, gdjs.VariablesContainer.badVariable);
 }
 { //Subevents
 gdjs.Start_95countdownCode.eventsList0(runtimeScene);} //End of subevents
