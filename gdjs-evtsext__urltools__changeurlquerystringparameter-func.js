@@ -8,7 +8,7 @@ if (typeof gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter !== "undefined"
 gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter = {};
 
 
-gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter.userFunc0x7e9450 = function GDJSInlineCode(runtimeScene, eventsFunctionContext) {
+gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter.userFunc0x1254fe8 = function GDJSInlineCode(runtimeScene, eventsFunctionContext) {
 "use strict";
 const url = new URL(eventsFunctionContext.getArgument("URL"));
 url.searchParams.set(
@@ -23,7 +23,7 @@ gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter.eventsList0 = function(run
 {
 
 
-gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter.userFunc0x7e9450(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
+gdjs.evtsExt__URLTools__ChangeURLQueryStringParameter.userFunc0x1254fe8(runtimeScene, typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined);
 
 }
 
