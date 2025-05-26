@@ -56,7 +56,7 @@ gdjs.Start_95countdownCode.GDfloor2Objects2= [];
 gdjs.Start_95countdownCode.GDfloor2Objects3= [];
 
 
-gdjs.Start_95countdownCode.asyncCallback17455140 = function (runtimeScene, asyncObjectsList) {
+gdjs.Start_95countdownCode.asyncCallback17460724 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
 gdjs.Start_95countdownCode.localVariables.length = 0;
 }
@@ -69,14 +69,14 @@ gdjs.Start_95countdownCode.eventsList0 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.3), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17455140(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.3), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17460724(runtimeScene, asyncObjectsList)));
 }
 }
 
 }
 
 
-};gdjs.Start_95countdownCode.asyncCallback17458516 = function (runtimeScene, asyncObjectsList) {
+};gdjs.Start_95countdownCode.asyncCallback17464100 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
 {gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "GameScene1", false);
 }gdjs.Start_95countdownCode.localVariables.length = 0;
@@ -90,7 +90,7 @@ gdjs.Start_95countdownCode.eventsList1 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(1.5), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17458516(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(1.5), (runtimeScene) => (gdjs.Start_95countdownCode.asyncCallback17464100(runtimeScene, asyncObjectsList)));
 }
 }
 
