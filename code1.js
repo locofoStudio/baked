@@ -34,7 +34,7 @@ gdjs.Game_32OverCode.GDPlayer2Objects1= [];
 gdjs.Game_32OverCode.GDPlayer2Objects2= [];
 
 
-gdjs.Game_32OverCode.asyncCallback17442652 = function (runtimeScene, asyncObjectsList) {
+gdjs.Game_32OverCode.asyncCallback17523692 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Game_32OverCode.localVariables);
 {gdjs.evtTools.firebaseTools.firestore.writeField("users", gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "uid", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "coinScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(3)), gdjs.VariablesContainer.badVariable, true);
 }{gdjs.evtTools.firebaseTools.firestore.writeField("users", gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "uid", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "runScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(2)), gdjs.VariablesContainer.badVariable, true);
@@ -49,7 +49,7 @@ gdjs.Game_32OverCode.eventsList0 = function(runtimeScene) {
 {
 const asyncObjectsList = new gdjs.LongLivedObjectsList();
 asyncObjectsList.backupLocalVariablesContainers(gdjs.Game_32OverCode.localVariables);
-runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.Game_32OverCode.asyncCallback17442652(runtimeScene, asyncObjectsList)));
+runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5), (runtimeScene) => (gdjs.Game_32OverCode.asyncCallback17523692(runtimeScene, asyncObjectsList)));
 }
 }
 
@@ -63,7 +63,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.5)
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(17440204);
+{isConditionTrue_0 = runtimeScene.getOnceTriggers().triggerOnce(17522220);
 }
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("FinalCoinScore"), gdjs.Game_32OverCode.GDFinalCoinScoreObjects1);
