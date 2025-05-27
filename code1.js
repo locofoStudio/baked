@@ -36,8 +36,8 @@ gdjs.Game_32OverCode.GDPlayer2Objects2= [];
 
 gdjs.Game_32OverCode.asyncCallback17524844 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Game_32OverCode.localVariables);
-{gdjs.evtTools.firebaseTools.firestore.writeField("userVenueProgress", gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "uid", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "coinScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(3)), gdjs.VariablesContainer.badVariable, true);
-}{gdjs.evtTools.firebaseTools.firestore.writeField("userVenueProgress", gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "uid", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "runScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(2)), gdjs.VariablesContainer.badVariable, true);
+{gdjs.evtTools.firebaseTools.firestore.writeField("userVenueProgress", gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().get("docID")), "coinScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(3)), gdjs.VariablesContainer.badVariable, true);
+}{gdjs.evtTools.firebaseTools.firestore.writeField("userVenueProgress", gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().get("docID")), "runScore", gdjs.evtTools.variable.getVariableString(runtimeScene.getGame().getVariables().getFromIndex(2)), gdjs.VariablesContainer.badVariable, true);
 }gdjs.Game_32OverCode.localVariables.length = 0;
 }
 gdjs.Game_32OverCode.eventsList0 = function(runtimeScene) {
