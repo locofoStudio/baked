@@ -61,7 +61,8 @@ gdjs.Start_95countdownCode.GDPlayer2Objects3= [];
 
 gdjs.Start_95countdownCode.asyncCallback17540900 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-gdjs.Start_95countdownCode.localVariables.length = 0;
+{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "GameScene1", false);
+}gdjs.Start_95countdownCode.localVariables.length = 0;
 }
 gdjs.Start_95countdownCode.eventsList0 = function(runtimeScene) {
 
@@ -81,8 +82,7 @@ runtimeScene.getAsyncTasksManager().addTask(gdjs.evtTools.runtimeScene.wait(0.3)
 
 };gdjs.Start_95countdownCode.asyncCallback17545580 = function (runtimeScene, asyncObjectsList) {
 asyncObjectsList.restoreLocalVariablesContainers(gdjs.Start_95countdownCode.localVariables);
-{gdjs.evtTools.runtimeScene.replaceScene(runtimeScene, "GameScene1", false);
-}gdjs.Start_95countdownCode.localVariables.length = 0;
+gdjs.Start_95countdownCode.localVariables.length = 0;
 }
 gdjs.Start_95countdownCode.eventsList1 = function(runtimeScene) {
 
@@ -173,6 +173,7 @@ if (isConditionTrue_0) {
 }{runtimeScene.getScene().getVariables().getFromIndex(1).setString(gdjs.evtsExt__URLTools__URLQueryStringParameter.func(runtimeScene, gdjs.evtsExt__URLTools__CurrentURL.func(runtimeScene, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)), "venueId", (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined)));
 }{runtimeScene.getScene().getVariables().getFromIndex(2).setString(gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().getFromIndex(0)) + "-" + gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().get("venueID")));
 }{gdjs.evtTools.firebaseTools.firestore.getDocument("userVenueProgress", gdjs.evtTools.variable.getVariableString(runtimeScene.getScene().getVariables().getFromIndex(2)), gdjs.VariablesContainer.badVariable, gdjs.VariablesContainer.badVariable);
+}{gdjs.evtTools.firebaseTools.auth.anonymSignIn(runtimeScene.getScene().getVariables().getFromIndex(0));
 }
 { //Subevents
 gdjs.Start_95countdownCode.eventsList0(runtimeScene);} //End of subevents
