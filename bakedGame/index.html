@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- CSP for Unity WebGL + Firebase compat SDK -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com;">
+    <!-- For production, consider using a stricter CSP and moving inline scripts to external files. -->
+    <title>Unity Web Player | locoBakedGame</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <!-- Firebase compat SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script>
+      // Your Firebase config
+      const firebaseConfig = {
+        apiKey: "AIzaSyDTgpaJ1UMaKd1TxMhunRsOlieN8mWpjM4",
+        authDomain: "locotag.firebaseapp.com",
+        projectId: "locotag",
+        storageBucket: "locotag.firebasestorage.app",
+        messagingSenderId: "783647689390",
+        appId: "1:783647689390:web:2dfe72017ec74be3863b3f",
+        measurementId: "G-3J2CKXKNV3"
+      };
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </head>
+  <body>
+    <div id="unity-container" class="unity-desktop">
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <div id="unity-loading-bar">
+        <div id="unity-logo"></div>
+        <div id="unity-progress-bar-empty">
+          <div id="unity-progress-bar-full"></div>
+        </div>
+      </div>
+      <div id="unity-warning"> </div>
+    </div>
+    <script>
+      // Dummy unityShowBanner function to prevent errors
+      function unityShowBanner(msg, type) {
+        // Optionally, you can log or display the message
+        // console.log("Unity Banner:", msg, type);
+      }
+    </script>
+    <script>
+      function enforcePortrait() {
+        var container = document.getElementById('unity-container');
+        var canvas = document.getElementById('unity-canvas');
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        if (w > h) {
+          container.style.transform = 'rotate(90deg)';
+          container.style.width = h + 'px';
+          container.style.height = w + 'px';
+          container.style.position = 'absolute';
+          container.style.left = (w - h) / 2 + 'px';
+          container.style.top = (h - w) / 2 + 'px';
+          if (!document.getElementById('rotate-msg')) {
+            var msg = document.createElement('div');
+            msg.id = 'rotate-msg';
+            msg.innerText = 'Please rotate your device to portrait mode';
+            msg.style.position = 'fixed';
+            msg.style.top = '50%';
+            msg.style.left = '50%';
+            msg.style.transform = 'translate(-50%, -50%)';
+            msg.style.background = 'rgba(0,0,0,0.7)';
+            msg.style.color = '#fff';
+            msg.style.padding = '20px';
+            msg.style.borderRadius = '10px';
+            msg.style.zIndex = 1000;
+            document.body.appendChild(msg);
+          }
+        } else {
+          container.style.transform = '';
+          container.style.width = '100vw';
+          container.style.height = '100vh';
+          container.style.position = '';
+          container.style.left = '';
+          container.style.top = '';
+          var msg = document.getElementById('rotate-msg');
+          if (msg) msg.remove();
+        }
+      }
+      window.addEventListener('resize', enforcePortrait);
+      window.addEventListener('orientationchange', enforcePortrait);
+      window.addEventListener('DOMContentLoaded', enforcePortrait);
+    </script>
+    <script>
+      var canvas = document.querySelector("#unity-canvas");
+      // ... Unity loader and config code ...
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/bakedGame.loader.js";
+      var config = {
+        arguments: [],
+        dataUrl: buildUrl + "/bakedGame.data.br",
+        frameworkUrl: buildUrl + "/bakedGame.framework.js.br",
+        codeUrl: buildUrl + "/bakedGame.wasm.br",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "locoBakedGame",
+        productVersion: "1.0.2",
+        showBanner: unityShowBanner,
+      };
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        var meta = document.createElement('meta');
+        meta.name = 'viewport';
+        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+        document.getElementsByTagName('head')[0].appendChild(meta);
+        document.querySelector("#unity-container").className = "unity-mobile";
+        canvas.className = "unity-mobile";
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
+      }
+      document.querySelector("#unity-loading-bar").style.display = "block";
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          document.querySelector("#unity-loading-bar").style.display = "none";
+          document.querySelector("#unity-fullscreen-button").onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+          // Expose unityInstance globally for JS interop
+          window.unityInstance = unityInstance;
+          // Unload button (optional)
+          var quit = document.createElement("button");
+          quit.style = "margin-left: 5px; background-color: lightgray; border: none; padding: 5px; cursor: pointer";
+          quit.innerHTML = "Unload";
+          document.querySelector("#unity-build-title").appendChild(quit);
+          quit.onclick = () => {
+            unityInstance.Quit().then(() => {
+              document.querySelector("#unity-container").remove();
+              canvas = null;
+              script.remove();
+              script = null;
+            });
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+    <script>
+      // Firebase functions for Unity
+      window.GetOrCreateUserJS = function(uid, venueId, callbackName) {
+        const db = firebase.firestore();
+        db.collection('users').doc(uid).get().then((doc) => {
+          if (doc.exists) {
+            const data = doc.data();
+            SendMessage('GameBackendManager', callbackName, data.displayName || '');
+          } else {
+            db.collection('users').doc(uid).set({
+              run: 0,
+              coinFromGame: 0,
+              hasPlayed: false,
+              createdTime: firebase.firestore.FieldValue.serverTimestamp(),
+              venueId: venueId,
+              uid: uid
+            }).then(() => {
+              SendMessage('GameBackendManager', callbackName, '');
+            });
+          }
+        });
+      }
+
+      window.SaveScoreJS = function(uid, venueId, run, coins, createdTime, callbackName) {
+        const db = firebase.firestore();
+        const userRef = db.collection('users').doc(uid);
+        const userVenueRef = db.collection('userVenueProgress').doc(uid + '-' + venueId);
+
+        userRef.get().then((doc) => {
+          const data = doc.data();
+          const gameTime = new Date() - new Date(createdTime);
+          userRef.update({
+            run: run,
+            coinFromGame: coins,
+            hasPlayed: true,
+            gameTime: gameTime
+          });
+
+          userVenueRef.get().then((doc) => {
+            if (doc.exists) {
+              const data = doc.data();
+              userVenueRef.update({
+                runHistory: firebase.firestore.FieldValue.arrayUnion(run),
+                coinFromGame: data.coinFromGame + coins
+              });
+            } else {
+              userVenueRef.set({
+                runHistory: [run],
+                coinFromGame: coins,
+                uid: uid,
+                venueId: venueId
+              });
+            }
+            SendMessage('GameBackendManager', callbackName, 'Score saved');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
